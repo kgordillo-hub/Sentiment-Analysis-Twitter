@@ -15,9 +15,13 @@ import requests
 
 class TwitterData:
     #start __init__
-    def __init__(self,givenDate, daysBack=180):
+    def __init__(self,startDate,endDate):
+        
         #Inicilize the array of dates to get the data from twitter (10 days back)
-        self.currDate = datetime.datetime.strptime(givenDate,'%Y-%m-%d')
+        self.currDate = datetime.datetime.strptime(startDate,'%Y-%m-%d')
+        self.currDateEnd = datetime.datetime.strptime(endDate,'%Y-%m-%d')
+        
+        daysBack = self.currDateEnd - self.currDate
         self.weekDates = []
         self.weekDates.append(self.currDate.strftime("%Y-%m-%d"))
         for i in range(1,daysBack):
