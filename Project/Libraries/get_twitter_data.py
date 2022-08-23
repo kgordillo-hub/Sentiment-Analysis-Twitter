@@ -22,6 +22,7 @@ class TwitterData:
         self.currDateEnd = datetime.datetime.strptime(endDate,'%Y-%m-%d')
         
         daysBack = self.currDateEnd - self.currDate
+        daysBack = daysBack.days
         self.weekDates = []
         self.weekDates.append(self.currDate.strftime("%Y-%m-%d"))
         for i in range(1,daysBack):
