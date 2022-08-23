@@ -27,7 +27,7 @@ class TwitterData:
         self.weekDates.append(self.currDate.strftime("%Y-%m-%d"))
         for i in range(1,daysBack):
             dateDiff = timedelta(days=-i)
-            newDate = self.currDate + dateDiff
+            newDate = self.currDateEnd + dateDiff
             self.weekDates.append(newDate.strftime("%Y-%m-%d"))
 
 
