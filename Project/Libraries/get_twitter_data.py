@@ -15,8 +15,8 @@ import requests
 
 class TwitterData:
     #start __init__
-    def __init__(self,startDate,endDate):
-        
+    def __init__(self,startDate,endDate,maxTweets):
+        self.maxTweets = maxTweets
         #Inicilize the array of dates to get the data from twitter (10 days back)
         self.currDate = datetime.datetime.strptime(startDate,'%Y-%m-%d')
         self.currDateEnd = datetime.datetime.strptime(endDate,'%Y-%m-%d')
@@ -78,11 +78,10 @@ class TwitterData:
 
     # start getTwitterData
     def getData(self, keyword, params = {}):
-        maxTweets = 200
         #url = 'https://api.twitter.com/1.1/search/tweets.json?'
         url = 'https://api.twitter.com/2/tweets/search/all?'
         query = keyword+str(' lang:en')
-        data = {'query': query, 'max_results': maxTweets, 'tweet.fields': 'created_at,lang,conversation_id', 'sort_order':'relevancy'}
+        data = {'query': query, 'max_results': self.maxTweets, 'tweet.fields': 'created_at,lang,conversation_id', 'sort_order':'relevancy'}
 
         # Add if additional params are passed
         if params:
