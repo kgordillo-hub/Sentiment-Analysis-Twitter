@@ -39,7 +39,7 @@ class TwitterData:
             path_to_file = '../Data/Tweets_'+keyword+'_'+self.weekDates[i]+'.txt'
             if exists(path_to_file) == False:
                 params = {'start_time': self.weekDates[i]+'T05:00:00Z', 'end_time': self.weekDates[i]+'T23:59:59Z'}
-                time.sleep(2)
+                time.sleep(3)
                 self.weekTweets[i] = self.getData(keyword, params)
                 self.allTweets[i] = self.weekTweets[i]
                 if(self.weekTweets[i] != None and len(self.weekTweets[i]) > 0):
