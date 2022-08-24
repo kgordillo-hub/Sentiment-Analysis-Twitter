@@ -25,7 +25,7 @@ class TwitterData:
         daysBack = daysBack.days
         self.weekDates = []
         self.weekDates.append(self.currDate.strftime("%Y-%m-%d"))
-        for i in range(1,daysBack):
+        for i in range(0,daysBack+1):
             dateDiff = timedelta(days=-i)
             newDate = self.currDateEnd + dateDiff
             self.weekDates.append(newDate.strftime("%Y-%m-%d"))
@@ -38,7 +38,7 @@ class TwitterData:
             self.weekTweets = {}
             path_to_file = '../Data/Tweets_'+keyword+'_'+self.weekDates[i]+'.txt'
             if exists(path_to_file) == False:
-                params = {'start_time': self.weekDates[i]+'T08:00:00Z', 'end_time': self.weekDates[i]+'T14:00:00Z'}
+                params = {'start_time': self.weekDates[i]+'T05:00:00Z', 'end_time': self.weekDates[i]+'T23:59:59Z'}
                 self.weekTweets[i] = self.getData(keyword, params)
                 self.allTweets[i] = self.weekTweets[i]
                 if(self.weekTweets[i] != None and len(self.weekTweets[i]) > 0):
