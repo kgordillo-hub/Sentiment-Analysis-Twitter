@@ -38,7 +38,7 @@ class TwitterData:
             self.weekTweets = {}
             path_to_file = '../Data/Tweets_'+keyword+'_'+self.weekDates[i]+'.txt'
             if exists(path_to_file) == False:
-                params = {'start_time': self.weekDates[i]+'T12:00:00Z', 'end_time': self.weekDates[i]+'T23:59:59Z'}
+                params = {'start_time': self.weekDates[i]+'T08:00:00Z', 'end_time': self.weekDates[i]+'T14:00:00Z'}
                 self.weekTweets[i] = self.getData(keyword, params)
                 self.allTweets[i] = self.weekTweets[i]
                 if(self.weekTweets[i] != None and len(self.weekTweets[i]) > 0):
@@ -77,7 +77,7 @@ class TwitterData:
 
     # start getTwitterData
     def getData(self, keyword, params = {}):
-        maxTweets = 500
+        maxTweets = 200
         #url = 'https://api.twitter.com/1.1/search/tweets.json?'
         url = 'https://api.twitter.com/2/tweets/search/all?'
         query = keyword+str(' lang:en')
